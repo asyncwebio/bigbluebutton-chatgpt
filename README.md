@@ -1,1 +1,1 @@
-# bigbluebutton-chatgpt
+# ChatGPT app for BigBlueButton
