@@ -1,0 +1,26 @@
+ {
+    "envelope": {
+      "name": "SendGroupChatMessageMsg",
+      "routing": {
+        "meetingId": "47145227ce3c06915564a61eafb77dad001d6627-1676270134950",
+        "userId": "w_asijdshlrbdr"
+      },
+      "timestamp": 1676270164228
+    },
+    "core": {
+      "header": {
+        "name": "SendGroupChatMessageMsg",
+        "meetingId": "47145227ce3c06915564a61eafb77dad001d6627-1676270134950",
+        "userId": "w_asijdshlrbdr"
+      },
+      "body": {
+        "msg": {
+          "correlationId": "w_asijdshlrbdr-1676270164064",
+          "sender": { "id": "w_asijdshlrbdr", "name": "", "role": "" },
+          "chatEmphasizedText": true,
+          "message": "Hello"
+        },
+        "chatId": "MAIN-PUBLIC-GROUP-CHAT"
+      }
+    }
+  }

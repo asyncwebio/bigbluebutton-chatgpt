@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  bbb-chatgpt:
+    build: .
+    env_file:
+      - .env
+    container_name: bbb-chatgpt
+    restart: always
+    network_mode: host
+
+
