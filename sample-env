@@ -1,0 +1,18 @@
+# Redis
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379
+REDIS_CHANNEL=to-akka-apps-redis-channel
+
+# MogoDB
+MONGO_URI=mongodb://127.0.0.1:4101/meteor
+
+# Chat GPT
+CHAT_GPT_API_TOKEN=
+CHAT_GPT_BASE_URL=https://api.openai.com
+CHAT_GPT_STOP_SEQUENCE=stop_ai
+
+
+# enable chat gpt
+CHAT_GPT_ENABLE=true
+CHAT_GPT_ENABLE_FOR_MODERATOR=true
+CHAT_GPT_ENABLE_FOR_VIEWER=false
