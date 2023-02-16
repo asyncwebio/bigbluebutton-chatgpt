@@ -36,9 +36,7 @@ sudo docker-compose up -d
 
 `CHAT_GPT_ENABLED`: Enable/Disable chat gpt for bigbluebutton
 
-`CHAT_GPT_ENABLE_FOR_MODERATOR`: Enable/Disable chat gpt acces for Moderators
-
-`CHAT_GPT_ENABLE_FOR_VIEWER`:  Enable/Disable chat gpt acces for Viewers
+`CHAT_GPT_ENABLE_FOR_VIEWER`: Enable/Disable chat gpt acces for Viewers
 
 ## How to
 

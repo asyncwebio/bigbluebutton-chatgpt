@@ -99,15 +99,26 @@ async function handleChatGPTCall(data) {
     if (!user) return;
 
     // Check if the user is a moderator
-    if (!chatGptService.isModerator(user)) return;
+    if (!chatGptService.isChatGPTAllowed(user)) return;
 
     // Remove the @chatGPT command from the prompt
     const prompt = chatGptService.getPrompt(body.msg.message);
 
+    // if prompt empty send  @chatGPT help
+    if (!prompt) {
+      sendMessage({
+        publisher,
+        message: `Prompt is empty!\nPlease use <i style="color:var(--color-primary,#0F70D7);">@chatGPT help</i> to get started.`,
+        event,
+        CHANNEL,
+      });
+
+      return;
+    }
+
+    // if prompt is help send help message
     if (prompt === "help") {
-      const newTimeStamp = +new Date();
-      envelope.timestamp = newTimeStamp;
-      const newMsg = `🤖 ChatGPT: You may use prompts such as the followings to get meaningful response from chatGPT: \n
+      const newMsg = `You may use prompts such as the followings to get meaningful response from chatGPT: \n
       1. @chatGPT Create a quiz with 5 multiple choice questions that assess students' understanding of [concept being taught]. \n
       2. @chatGPT Find the bug with this code: [post code below] \n
       3. @chatGPT What exactly does this regex do? rege(x(es)?|xps?). \n
@@ -115,37 +126,64 @@ async function handleChatGPTCall(data) {
       5. @chatGPT Please provide a definition for the medical term 'tachycardia'. \n
       <a href="https://classplusplus.com/chatgpt/" target="_blank">Click here</a> for more ChatGPT prompts. \n
       `;
-      // Update the message body
-      body.msg.message = newMsg;
-      event.core.body = body;
-      // Publish the new message to the channel
-      await publisher.publish(CHANNEL, JSON.stringify(event));
+
+      sendMessage({
+        publisher,
+        message: newMsg,
+        event,
+        CHANNEL,
+      });
+
       return;
     }
     // Get the response from the chatGPT API
     const response = await chatGptService.getResponseFromChatGPT({ prompt });
-    const newTimeStamp = +new Date();
 
-    // Update the message timestamp
-    envelope.timestamp = newTimeStamp;
-    const newMsg = `🤖 ChatGPT: ${response}`;
-
-    // Update the message body
-    body.msg.message = newMsg;
-    event.core.body = body;
-    // Publish the new message to the channel
-    await publisher.publish(CHANNEL, JSON.stringify(event));
+    //if response is empty send error message
+    if (!response) {
+      sendMessage({
+        publisher,
+        message: "Something went wrong. Please try again later.",
+        event,
+        CHANNEL,
+      });
+      return;
+    }
+    sendMessage({
+      publisher,
+      message: response,
+      event,
+      CHANNEL,
+    });
+    return;
   } catch (error) {
     console.error(error);
     //check if it is axios error
     if (!error?.response?.data) return;
-    const newTimeStamp = +new Date();
+    sendMessage({
+      publisher,
+      message: error.response.data.error.message,
+      event,
+      CHANNEL,
+    });
 
-    // Update the message timestamp
-    event.envelope.timestamp = newTimeStamp;
-    const newMsg = `🤖 ChatGPT: ${error.response.data.error.message}`;
+    return;
+  }
+}
+
+function sendMessage({ publisher, message, event, CHANNEL }) {
+  try {
+    const { envelope } = event;
+    const body = event.core.body;
+    const newTimeStamp = +new Date();
+    envelope.timestamp = newTimeStamp;
+    const newMsg = `🤖 <span style="color: blue;">ChatGPT</span>: ${message}`;
     // Update the message body
-    event.core.body.msg.message = newMsg;
-    await publisher.publish(CHANNEL, JSON.stringify(event));
+    body.msg.message = newMsg;
+    event.core.body = body;
+    // Publish the new message to the channel
+    publisher.publish(CHANNEL, JSON.stringify(event));
+  } catch (error) {
+    console.error(error);
   }
 }
