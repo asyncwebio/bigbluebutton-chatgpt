@@ -51,12 +51,12 @@ async function getResponseFromChatGPT({ prompt }) {
  *
  */
 function isChatGPTAllowed(user) {
-  // If viewer env vars are both set to true, return true
+  // If viewer are allowed to use chagt gpt then return tru
   if (process.env.CHAT_GPT_ENABLE_FOR_VIEWER === "true") {
     return true;
   }
 
-  // If the moderator env var is set to true and the viewer env var is set to false, return true if the user is a moderator
+  // If chagpt is only enabled for moderators then return true if the user is a moderator
   if (process.env.CHAT_GPT_ENABLE_FOR_VIEWER === "false") {
     return user.role === "MODERATOR";
   }
