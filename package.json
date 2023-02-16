@@ -5,8 +5,7 @@
     "mongodb": "^5.0.1",
     "redis": "^4.6.4"
   },
-  "name": "bigbluebutton-chatgpt
-",
+  "name": "bigbluebutton-chatgpt",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
