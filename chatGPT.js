@@ -46,24 +46,18 @@ async function getResponseFromChatGPT({ prompt }) {
  *  const user = {
  *   role: "MODERATOR"
  * };
- * const isModerator = chatGptService.isModerator(user);
- * console.log(isModerator); // true
+ * const isChatGPTAllowed = chatGptService.isChatGPTAllowed(user);
+ * console.log(isChatGPTAllowed); // true
  *
  */
-function isModerator(user) {
-  // If the moderator and viewer env vars are both set to true, return true
-  if (
-    process.env.CHAT_GPT_ENABLE_FOR_MODERATOR == "true" &&
-    process.env.CHAT_GPT_ENABLE_FOR_VIEWER === "true"
-  ) {
+function isChatGPTAllowed(user) {
+  // If viewer env vars are both set to true, return true
+  if (process.env.CHAT_GPT_ENABLE_FOR_VIEWER === "true") {
     return true;
   }
 
   // If the moderator env var is set to true and the viewer env var is set to false, return true if the user is a moderator
-  if (
-    process.env.CHAT_GPT_ENABLE_FOR_MODERATOR === "true" &&
-    process.env.CHAT_GPT_ENABLE_FOR_VIEWER === "false"
-  ) {
+  if (process.env.CHAT_GPT_ENABLE_FOR_VIEWER === "false") {
     return user.role === "MODERATOR";
   }
 }
@@ -84,6 +78,6 @@ function getPrompt(message) {
 
 module.exports = {
   getResponseFromChatGPT,
-  isModerator,
+  isChatGPTAllowed,
   getPrompt,
 };
