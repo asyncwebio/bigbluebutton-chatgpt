@@ -51,7 +51,7 @@ async function getResponseFromChatGPT({ prompt }) {
  *
  */
 function isChatGPTAllowed(user) {
-  // If viewer are allowed to use chagt gpt then return tru
+  // If viewer are allowed to use chagt gpt then return true
   if (process.env.CHAT_GPT_ENABLE_FOR_VIEWER === "true") {
     return true;
   }
