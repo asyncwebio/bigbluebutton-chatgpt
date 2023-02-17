@@ -108,7 +108,7 @@ async function handleChatGPTCall(data) {
     if (!prompt) {
       sendMessage({
         publisher,
-        message: `Prompt is empty!\nPlease use <i style="color:var(--color-primary,#0F70D7);">@chatGPT help</i> to get started.`,
+        message: `Prompt is empty!\nPlease use <i style="color:var(--color-primary,#0F70D7);">@chatGPT help</i>  to see prompt examples.`,
         event,
         CHANNEL,
       });
