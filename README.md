@@ -1,8 +1,8 @@
 <div align="center">
    <img alt="bigbluebutton" width="60" src="https://higheredlab.com/wp-content/uploads/hel_icon.png" />
 </div>
-<h1 align="center">BigBlueButton ChatGPT</h1>
-<p align="center">Integrate ChatGpt into BigBlueButton chat.</p>
+<h1 align="center">ChatGPT for BigBlueButton</h1>
+<p align="center">Use ChatGGPT to improve your BigBlueButton online classes</p>
 
 <!-- # ChatGPT app for BigBlueButton -->
 <br/>
@@ -11,7 +11,7 @@
 
 [OpenAI](https://openai.com/) Chat GPT is an AI chatbot auto-generative system created by Open AI for online customer care. It is a pre-trained generative chat, which makes use of (NLP) Natural Language Processing.
 
-[BigBlueButton](https://bigbluebutton.org/) is like-Zoom for online classes but at a much lower cost, with better analytics, and is open-source.
+[BigBlueButton](https://bigbluebutton.org/) is the most-popular open-source software to conduct online classes. It is being used across thousands to schools and integrates well with Moodle, Canvas, Druple and even with your custom LMS via REST APIs. It provides everything you need for your online classes: HD audio/video conference, whiteboard, chat, presentation, polling, analytics and scales easily to conduct hundreds of classes.
 
 <br/><br/>
 
