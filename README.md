@@ -7,32 +7,40 @@
 <!-- # ChatGPT app for BigBlueButton -->
 <br/>
 
-# ChatGpt App for BigBlueButton
+# ChatGPT App for BigBlueButton
 
-[OpenAI](https://openai.com/) Chat GPT is an AI chatbot auto-generative system created by Open AI for online customer care. It is a pre-trained generative chat, which makes use of (NLP) Natural Language Processing.
+[OpenAI](https://openai.com/) ChatGPT is an AI chatbot auto-generative system created by Open AI for online customer care. It is a pre-trained generative chat, which makes use of (NLP) Natural Language Processing.
 
 [BigBlueButton](https://bigbluebutton.org/) is the most-popular open-source software to conduct online classes. It is being used across thousands to schools and integrates well with Moodle, Canvas, Druple and even with your custom LMS via REST APIs. It provides everything you need for your online classes: HD audio/video conference, whiteboard, chat, presentation, polling, analytics and scales easily to conduct hundreds of classes.
 
-<br/><br/>
+## How It works
+
+ChatGPT is a large language model trained by OpenAI that is capable of generating human-like text. By providing it with a prompt, it can generate responses that continue the conversation or expand on the given prompt.
+
+We have integrated ChatGPT with BigBlueButton, the most popular open-source virtual classroom software. This gives teachers (and students) the ability to unleash the power of ChatGPT to make online classes better.
+
+After installing BigBlueButton-ChatGPT app, you can invoke ChatGPT by sending `@chatgpt <prompt>` message in the Public Chat. The app would make a call to the ChatGPT API, passing the prompt, get and publish the response.
 
 ## ✨ Features
-The main feature of Chat GPT is generating responses like those humans would provide, in a text box. Therefore, it is suitable for chatbots, AI system conversations, and virtual assistants. <br/>
-However, it can also give natural answers to questions in a conversational tone and can generate stories poems andm ore. Moreover, Chat GPT can:
 
-- **Write code** You can ask any coding question in the chat and Chat GPT will generate code for you.
-- **Write an article or blog post** You can ask Chat GPT to write an article or blog post for you.
-- **Translate** You can ask Chat GPT to translate any language to any language.
-- **Debug** You can ask Chat GPT to debug your code.
-- **Write a story/poem** You can ask Chat GPT to write a story or poem for you.
-- **Recommend chords and lyrics** You can ask Chat GPT to recommend chords and lyrics for you.
+You can get started by sending `@chatgpt help` in Public Chat of BigBlueButton that would show the following prompts.
+
+- Create a quiz with 5 multiple choice questions that assess students’ understanding of [concept being taught].
+- Find the bug with this code: <post code below>
+- What exactly does this regex do? rege(x(es)?|xps?).
+- Describe <topic of your choice> in detail.
+- Please provide a definition for the medical term ‘tachycardia’.
+   
+For more prompts, please refer to [this document](https://classplusplus.com/chatgpt/).
 
 ## 🖐 Requirements
 
-- A server with BigBlueButton 2.5 or greater installed.
-- Docker
-- Docker compose
+- A server with BigBlueButton 2.5+ installed
+- Docker with Docker compose
 
 ## ⏳ Instllation
+   
+It hardly takes few minues to install ChatGPT app for BigBlueButton, as detailed below: 
 
 ```sh
 git clone https://github.com/AsyncWeb/bigbluebutton-chatgpt.git
@@ -46,23 +54,19 @@ cp sample-env .env
 sudo docker-compose up -d
 ```
 
-## 🔧 Environment variables
+## 🔧 Configuration
 
-`REDIS_HOST`: Redis host that BigBlueButton is using
+You would need to create an account on OpenAI to get chatGPT token by visiting [this page on OpenAI](https://platform.openai.com/account/api-keys)
+Update `.env` file in the project root directory, look for `CHAT_GPT_API_TOKEN` environment and set it to the token that you have got. 
+   
+You can enable chatGPT for all attendees of BigBlueButton or restrict it to only moderators, which is recommended in an online classroom setting. 
+To enable chatGPT, set `CHAT_GPT_ENABLED` as `true` or `false` otherwise; By default, chatGPT is enabled only for moderators. 
+To enable chatGPT for all attendees, set `CHAT_GPT_ENABLE_FOR_VIEWER` as `true` or `false` otherwise;
+   
+In addition, there are few more environment variables set, which works out-of-the-box for default BigBlueButton installation.
 
-`REDIS_PORT`: Redis port that BigBlueButton is listening
-
-`REDIS_CHANNEL`: Redis channel that BigBlueButton will send message events
-
-`MONGO_URI`: Mongo db connection url that is used by BigBlueButton
-
-`CHAT_GPT_API_TOKEN`: Visit https://platform.openai.com/account/api-keys to get your API token
-
-`CHAT_GPT_ENABLED`: Enable/Disable chat gpt for bigbluebutton
-
-`CHAT_GPT_ENABLE_FOR_VIEWER`: Enable/Disable chat gpt acces for Viewers
-
-## 💡 How to
+## 💡 How to use it
 
 - Start a bbb meeting and join as moderator
 - Enter `@chatGPT help` in public chat to see example prompts
+- Use one of the example prompts to get started
