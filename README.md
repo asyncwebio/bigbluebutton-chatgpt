@@ -2,7 +2,7 @@
    <img alt="bigbluebutton" width="60" src="https://higheredlab.com/wp-content/uploads/hel_icon.png" />
 </div>
 <h1 align="center">ChatGPT for BigBlueButton</h1>
-<p align="center">Use ChatGGPT to improve your BigBlueButton online classes</p>
+<p align="center">Use ChatGPT to improve your BigBlueButton online classes</p>
 
 <!-- # ChatGPT app for BigBlueButton -->
 <br/>
