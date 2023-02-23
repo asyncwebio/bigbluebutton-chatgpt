@@ -1,5 +1,5 @@
 <div align="center">
-   <img alt="bigbluebutton" width="60" src="https://higheredlab.com/wp-content/uploads/hel_icon.png" />
+   <img alt="chatgpt" width="60" src="https://higheredlab.com/wp-content/uploads/chatgpt-96.png" />
 </div>
 <h1 align="center">ChatGPT for BigBlueButton</h1>
 <p align="center">Use ChatGPT to improve your BigBlueButton online classes</p>
@@ -13,7 +13,7 @@
 
 [BigBlueButton](https://bigbluebutton.org/) is the most-popular open-source software to conduct online classes. It is being used across thousands to schools and integrates well with Moodle, Canvas, Druple and even with your custom LMS via REST APIs. It provides everything you need for your online classes: HD audio/video conference, whiteboard, chat, presentation, polling, analytics and scales easily to conduct hundreds of classes.
 
-## 🤖 How It works
+## ℹ️ How It works
 
 ChatGPT is a large language model trained by OpenAI that is capable of generating human-like text. By providing it with a prompt, it can generate responses that continue the conversation or expand on the given prompt.
 
