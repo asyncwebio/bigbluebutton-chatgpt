@@ -24,8 +24,7 @@ async function getResponseFromChatGPT({ prompt }) {
     const { data } = await chatGPT.post("/v1/completions", {
       model: "text-davinci-003",
 
-      // append the stop sequence to the prompt so the API knows when to stop generating text.
-      prompt: `${prompt.trim()} ${process.env.CHAT_GPT_STOP_SEQUENCE}}`,
+      prompt: prompt.trim(),
       temperature: 0,
       max_tokens: 1000,
       stop: [process.env.CHAT_GPT_STOP_SEQUENCE],

@@ -57,8 +57,8 @@ client.subscribe(CHANNEL, handleChatGPTCall);
 
 async function handleChatGPTCall(data) {
   if (
-    process.env.CHAT_GPT_ENABLED == undefined ||
-    process.env.CHAT_GPT_ENABLED != "true"
+    process.env.CHAT_GPT_ENABLE == undefined ||
+    process.env.CHAT_GPT_ENABLE != "true"
   )
     return;
 
