@@ -6,12 +6,15 @@ REDIS_CHANNEL=to-akka-apps-redis-channel
 # MogoDB
 MONGO_URI=mongodb://127.0.1.1:27017/meteor
 
-# Chat GPT
+# Chat GPT config
+MODEL=text-davinci-003
 CHAT_GPT_API_TOKEN=
 CHAT_GPT_BASE_URL=https://api.openai.com
 CHAT_GPT_STOP_SEQUENCE=stop_ai
 
-
-# enable chat gpt
 CHAT_GPT_ENABLE=true
 CHAT_GPT_ENABLE_FOR_VIEWER=false
+CHAT_GPT_COMMAND=chatgpt
+
+# Only emoji are allowed
+CHAT_GPT_ICON=🤖

@@ -74,11 +74,12 @@ async function handleChatGPTCall(data) {
     const body = event.core.body;
     const message = body?.msg?.message;
     let isChatGPTCall = false;
+    const chatGPTCommand = process.env.CHAT_GPT_COMMAND || "chatgpt";
 
     // Check if the message is a chatGPT call case insensitive
     if (
       name === "SendGroupChatMessageMsg" &&
-      message?.toLowerCase().startsWith("@chatgpt")
+      message?.toLowerCase().startsWith("@" + chatGPTCommand)
     ) {
       isChatGPTCall = true;
     }
@@ -108,7 +109,7 @@ async function handleChatGPTCall(data) {
     if (!prompt) {
       sendMessage({
         publisher,
-        message: `Prompt is empty!\nPlease use <i style="color:var(--color-primary,#0F70D7);">@chatGPT help</i>  to see prompt examples.`,
+        message: `Prompt is empty!\nPlease use <i style="color:var(--color-primary,#0F70D7);">@${chatGPTCommand} help</i>  to see prompt examples.`,
         event,
         CHANNEL,
       });
@@ -119,11 +120,11 @@ async function handleChatGPTCall(data) {
     // if prompt is help send help message
     if (prompt === "help") {
       const newMsg = `You may use prompts such as the followings to get meaningful response from chatGPT: \n
-      1. @chatGPT Create a quiz with 5 multiple choice questions that assess students' understanding of [concept being taught]. \n
-      2. @chatGPT Find the bug with this code: [post code below] \n
-      3. @chatGPT What exactly does this regex do? rege(x(es)?|xps?). \n
-      4. @chatGPT Describe [topic of your choice] in detail. \n
-      5. @chatGPT Please provide a definition for the medical term 'tachycardia'. \n
+      1. @${chatGPTCommand} Create a quiz with 5 multiple choice questions that assess students' understanding of [concept being taught]. \n
+      2. @${chatGPTCommand} Find the bug with this code: [post code below] \n
+      3. @${chatGPTCommand} What exactly does this regex do? rege(x(es)?|xps?). \n
+      4. @${chatGPTCommand} Describe [topic of your choice] in detail. \n
+      5. @${chatGPTCommand} Please provide a definition for the medical term 'tachycardia'. \n
       <a href="https://classplusplus.com/chatgpt/" target="_blank">Click here</a> for more ChatGPT prompts. \n
       `;
 
@@ -177,7 +178,9 @@ function sendMessage({ publisher, message, event, CHANNEL }) {
     const body = event.core.body;
     const newTimeStamp = +new Date();
     envelope.timestamp = newTimeStamp;
-    const newMsg = `🤖 <span style="color: blue;">ChatGPT</span>: ${message}`;
+    const chatGPTIcon = process.env.CHAT_GPT_ICON || "🤖";
+    const chatGPTCommand = process.env.CHAT_GPT_COMMAND || "chatgpt";
+    const newMsg = `${chatGPTIcon} <span style="color: blue;">${chatGPTCommand}</span>: ${message}`;
     // Update the message body
     body.msg.message = newMsg;
     event.core.body = body;
