@@ -22,8 +22,7 @@ const chatGPT = axios.create({
 async function getResponseFromChatGPT({ prompt }) {
   try {
     const { data } = await chatGPT.post("/v1/completions", {
-      model: "text-davinci-003",
-
+      model: process.env.CHAT_GPT_MODEL || "text-davinci-003",
       prompt: prompt.trim(),
       temperature: 0,
       max_tokens: 1000,
@@ -71,8 +70,9 @@ function isChatGPTAllowed(user) {
  * console.log(prompt); // "what is 1 + 1"
  */
 function getPrompt(message) {
-  //replace all @chatGPT with empty string and remove any leading or trailing spaces
-  return message.replace(/@chatGPT/gi, "").trim();
+  const chatGPTCommand = process.env.CHAT_GPT_COMMAND || "chatgpt";
+  //replace all chatGPTCommand with empty string and remove any leading or trailing spaces
+  return message.replace("@" + chatGPTCommand, "").trim();
 }
 
 module.exports = {

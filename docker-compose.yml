@@ -1,11 +1,9 @@
-version: '3.3'
+version: "3.3"
 services:
   bbb-chatgpt:
-    image: manishkatyan/bigbluebutton-chatgpt:v1
+    image: manishkatyan/bigbluebutton-chatgpt:v1.0.1
     env_file:
       - .env
     container_name: bbb-chatgpt
     restart: always
     network_mode: host
-
-
