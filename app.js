@@ -50,6 +50,10 @@ publisher.on("error", (err) => {
   console.log("Publisher Error " + err);
 });
 
+console.log("ChatGPT is running...");
+console.log("ChatGPT command: " + (process.env.CHAT_GPT_COMMAND || "chatgpt"));
+console.log("ChatGPT icon: " + (process.env.CHAT_GPT_ICON || "🤖"));
+
 // Subscribe to the channel
 client.subscribe(CHANNEL, handleChatGPTCall);
 
